@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>仿微信聊天室</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- 登录/注册界面 -->
+    <div id="auth-screen" class="screen">
+      <h2>欢迎进入聊天室</h2>
+      <div id="auth-tabs">
+        <button id="login-tab" class="tab active">登录</button>
+        <button id="register-tab" class="tab">注册</button>
+      </div>
+      <form id="auth-form">
+        <input type="text" id="username" placeholder="用户名" required />
+        <input type="password" id="password" placeholder="密码" required />
+        <div id="register-extra" style="display:none;">
+          <input type="text" id="nickname" placeholder="昵称" required />
+          <input type="url" id="avatar" placeholder="头像URL" required />
+        </div>
+        <button type="submit">提交</button>
+      </form>
+      <p id="auth-error" class="error"></p>
+    </div>
+
+    <!-- 管理员登录界面 -->
+    <div id="admin-login-screen" class="screen" style="display:none;">
+      <h2>管理员登录</h2>
+      <input type="password" id="admin-password" placeholder="管理员密码" required />
+      <button id="admin-login-btn">登录管理员</button>
+      <p id="admin-error" class="error"></p>
+    </div>
+
+    <!-- 聊天主界面 -->
+    <div id="chat-screen" class="screen" style="display:none;">
+      <div class="chat-header">
+        <h2>群聊</h2>
+        <span id="user-info">你好，<span id="current-username"></span></span>
+        <button id="logout-btn">退出</button>
+      </div>
+
+      <div id="chat-messages" class="messages"></div>
+
+      <div class="chat-input">
+        <input type="text" id="message-input" placeholder="输入消息..." disabled />
+        <button id="send-btn" disabled>发送</button>
+      </div>
+
+      <!-- 管理员面板 -->
+      <div id="admin-panel" style="display:none;">
+        <h3>管理员控制台</h3>
+        <button id="clear-messages-btn">清除聊天记录</button>
+        <label>
+          自动清除时间：
+          <select id="clear-time-select">
+            <option value="0">从不自动清除</option>
+            <option value="86400000">每天</option>
+            <option value="604800000">每周</option>
+          </select>
+        </label>
+        <div id="user-list">
+          <h4>用户列表</h4>
+          <ul id="user-ul"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
