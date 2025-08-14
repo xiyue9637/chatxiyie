@@ -1,5 +1,5 @@
-// script.js - 前端逻辑（已填入你的 API 地址）
-
+// script.js - 前端逻辑
+// API 地址已根据您的 Worker 设置
 const API_URL = 'https://chat-worker.bin856672.workers.dev';
 
 let currentUser = null;
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('admin-login-btn').addEventListener('click', async () => {
     const pwd = document.getElementById('admin-password').value;
-    if (pwd !== 'adminxiyue') {
+    if (pwd !== 'adminxiyue') { // 前端写死的管理员密码
       document.getElementById('admin-error').textContent = '密码错误';
       return;
     }
@@ -235,3 +235,6 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+
+// 初始化为登录模式
+setAuthMode('login');
